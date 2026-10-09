@@ -257,12 +257,11 @@ with tab_dash:
     st.caption("Blue area = total requests per hour. Red line = server errors per hour (secondary axis).")
     hourly_show = hourly.copy()
     base = alt.Chart(hourly_show).encode(x=alt.X("ts:T", title=None))
+    # Solid fill, not alt.Gradient — the gradient-stops spec diverges
+    # between Vega-Lite versions and renders invisible on Streamlit Cloud.
     req_area = base.mark_area(
         line={"color": BRAND_BLUE, "strokeWidth": 2},
-        color=alt.Gradient(gradient="linear",
-                           stops=[alt.GradientStop(color=BRAND_BLUE, offset=0),
-                                  alt.GradientStop(color=BRAND_INK2, offset=1)],
-                           x1=1, x2=1, y1=1, y2=0),
+        color=BRAND_BLUE, opacity=0.35,
     ).encode(y=alt.Y("requests:Q", title="Requests / hour"),
              tooltip=["ts:T", "requests:Q", "errors:Q", "server_errors:Q"])
     err_line = base.mark_line(color=BRAND_PRIMARY, strokeWidth=2).encode(

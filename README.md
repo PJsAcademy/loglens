@@ -4,7 +4,7 @@ Server-log analytics with Median Absolute Deviation (MAD) anomaly detection.
 Python capstone of [Bits to Builds](https://bitstobuilds.com). CLF regex parser,
 rich endpoint/UA/IP analytics, modified z-score alerting on hourly 5xx counts.
 
-**Live demo:** (fill in after `publish.sh`)
+**Live demo:** <https://loglens-jq3wnzxysdcwzwbhm2pisp.streamlit.app/>
 **Source:** <https://github.com/PJsAcademy/loglens>
 
 ---
